@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class NavigatedBloc extends StatelessWidget {
-  const NavigatedBloc({super.key});
+class RoutedScreen extends StatelessWidget {
+  const RoutedScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
