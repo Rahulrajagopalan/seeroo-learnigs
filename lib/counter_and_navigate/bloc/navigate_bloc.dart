@@ -1,28 +1,26 @@
 import 'package:bloc/bloc.dart';
 import 'package:rahul_test_file/counter_and_navigate/bloc/navigate_event.dart';
 import 'package:rahul_test_file/counter_and_navigate/cubit/navigate_state.dart';
-import 'package:http/http.dart' as http;
+import 'package:rahul_test_file/repository/post_repository.dart';
 
 class NavigateBloc extends Bloc<NavigateEvent, NavigateState> {
-  NavigateBloc() : super(NavigateInitial()) {
-    @override
-    Stream<NavigateState> mapEventToState(NavigateEvent event) async* {
-      if (event is PerformNavigateCall) {
-        yield NavigateLoading();
+  final PostRepository postRepository;
 
-        try {
-          final response = await http
-              .get(Uri.parse('https://jsonplaceholder.typicode.com/posts/1'));
+  NavigateBloc(this.postRepository) : super(NavigateInitial()) {
+    on<NavigateEvent>((event, emit) async {
+      await event.when(fetchPosts: () async {
+        await _onFetchPosts(emit);
+      });
+    });
+  }
 
-          if (response.statusCode == 200) {
-            yield NavigateSuccess();
-          } else {
-            yield NavigateFailure('Failed to load data');
-          }
-        } catch (e) {
-          yield NavigateFailure(e.toString());
-        }
-      }
+  Future<void> _onFetchPosts(Emitter<NavigateState> emit) async {
+    emit(NavigateLoading());
+    try {
+      final posts = await postRepository.fetchPosts();
+      emit(NavigateSuccess(posts));
+    } catch (e) {
+      emit(NavigateFailure(e.toString()));
     }
   }
 }

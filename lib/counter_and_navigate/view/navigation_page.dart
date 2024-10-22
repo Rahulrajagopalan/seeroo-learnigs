@@ -11,9 +11,7 @@ class NavigationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<NavigateBloc>(
-      create: (_) => NavigateBloc(),
-      child: Scaffold(
+    return Scaffold(
         appBar: AppBar(title: Text('HTTP Call with BLoC')),
         body: BlocListener<NavigateBloc, NavigateState>(
           listener: (context, state) {
@@ -39,14 +37,13 @@ class NavigationPage extends StatelessWidget {
                 onPressed: () {
                   context
                       .read<NavigateBloc>()
-                      .add(PerformNavigateCall());
+                      .add(NavigateEvent.fetchPosts());
                 },
                 child: Text('Make HTTP Call'),
               ),
             );
           }),
         ),
-      ),
-    );
+      );
   }
 }
