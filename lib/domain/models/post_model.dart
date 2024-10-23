@@ -1,24 +1,17 @@
-class PostModel {
-  final int userId;
-  final int id;
-  final String title;
-  final String body;
 
-  PostModel(
-      {required this.userId,
-      required this.id,
-      required this.title,
-      required this.body});
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  factory PostModel.fromMap(Map<String, dynamic> map) {
-    return PostModel(
-        userId: map["userId"],
-        id: map["id"],
-        title: map["title"],
-        body: map["body"]);
-  }
+part 'post_model.freezed.dart';
+part 'post_model.g.dart';
 
-  toMap(){
-    
-  }
+@freezed
+class PostModel with _$PostModel {
+  factory PostModel({
+    required int userId,
+    required int id,
+    required String title,
+    required String body,
+  }) = _PostModel;
+
+  factory PostModel.fromJson(Map<String, dynamic> json) => _$PostModelFromJson(json);
 }
