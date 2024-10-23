@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rahul_test_getx/views/controllers/post_controller.dart';
 import 'package:rahul_test_getx/views/second_page.dart';
 
 class FirstPage extends StatelessWidget {
-  const FirstPage({super.key});
+  FirstPage({super.key});
+
+  final postController = Get.put(PostController());
 
   @override
   Widget build(BuildContext context) {
@@ -11,20 +14,25 @@ class FirstPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("First Page"),
       ),
-      body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TextButton(
-              onPressed: () {
-                Get.toNamed("/second_page", arguments: [
-                  "Rahul"
-                ]);
-                // Get.to(()=> SecondPage(name: "Rahul",));
-              },
-              child: Text("To Second"))
-        ],
-      )),
+      body: GetX<PostController>(builder: (controller) {
+        return ListView.builder(
+            itemCount: controller.postsList.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    leading: Text(controller.postsList[index].id.toString()),
+                    title: Text(controller.postsList[index].title.toString()),
+                    subtitle: Text(controller.postsList[index].body.toString()),
+                  ));
+            });
+      }),
+      floatingActionButton: ElevatedButton(
+          onPressed: () {
+            Get.toNamed("/second_page", arguments: ["Name"]);
+            // Get.to(()=> SecondPage(name: "Rahul",));
+          },
+          child: Text("Second >>>")),
     );
   }
 }
