@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rahul_test_getx/views/controllers/post_controller.dart';
+import 'package:rahul_test_getx/controllers/post_controller.dart';
 import 'package:rahul_test_getx/views/second_page.dart';
 
 class FirstPage extends StatelessWidget {

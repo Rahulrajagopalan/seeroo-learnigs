@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:rahul_test_getx/views/models/post_model.dart';
+import 'package:rahul_test_getx/models/post_model.dart';
 import 'package:http/http.dart' as http;
 
 class PostController extends GetxController {
