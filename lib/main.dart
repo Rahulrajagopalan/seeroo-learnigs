@@ -9,6 +9,7 @@ import 'package:rahul_test_file/counter_observer.dart';
 import 'package:rahul_test_file/learnigs/learn_list_fun.dart';
 import 'package:rahul_test_file/learnigs/home.dart';
 import 'package:rahul_test_file/repository/post_repository.dart';
+import 'package:rahul_test_file/route.dart';
 
 void main() {
   // To Impliment counter observer if neeeded
@@ -20,15 +21,17 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
+
+    final _appRouter = AppRouter();
     return MultiBlocProvider(
       providers: [
         BlocProvider<NavigateBloc>(
             create: (context) => NavigateBloc(PostRepository(Dio())))
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         title: 'Rahul Demo',
-        home: NavigationPage(),
+        routerConfig: _appRouter.config(),
       ),
     );
   }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rahul_test_file/counter_and_navigate/bloc/navigate_bloc.dart';
-import 'package:rahul_test_file/counter_and_navigate/bloc/navigate_event.dart';
-import 'package:rahul_test_file/counter_and_navigate/bloc/navigate_state.dart';
 import 'package:rahul_test_file/counter_and_navigate/view/routed_screen.dart';
 import 'package:rahul_test_file/domain/models/post_model.dart';
 

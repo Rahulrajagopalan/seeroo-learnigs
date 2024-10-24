@@ -1,9 +1,14 @@
 import 'package:bloc/bloc.dart';
-import 'package:rahul_test_file/counter_and_navigate/bloc/navigate_event.dart';
-import 'package:rahul_test_file/counter_and_navigate/bloc/navigate_state.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:rahul_test_file/domain/models/post_model.dart';
 import 'package:rahul_test_file/repository/post_repository.dart';
 
+part 'navigate_bloc.freezed.dart';
+part 'navigate_event.dart';
+part 'navigate_state.dart';
+
+@injectable
 class NavigateBloc extends Bloc<NavigateEvent, NavigateState> {
   final PostRepository postRepository;
 
