@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rahul_test_getx/locator.dart';
 import 'package:rahul_test_getx/views/first_page.dart';
 import 'package:rahul_test_getx/views/home_page.dart';
 import 'package:rahul_test_getx/views/second_page.dart';
 
 void main() {
+  setUp();
   runApp(const MyApp());
 }
 
