@@ -28,10 +28,11 @@ class MyApp extends StatelessWidget {
         BlocProvider<NavigateBloc>(
             create: (context) => NavigateBloc(PostRepository(Dio())))
       ],
-      child: MaterialApp.router(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Rahul Demo',
-        routerConfig: _appRouter.config(),
+        home: NavigationPage(),
+        // routerConfig: _appRouter.config(),
       ),
     );
   }
