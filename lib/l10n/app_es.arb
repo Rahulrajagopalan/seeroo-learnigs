@@ -1,0 +1,13 @@
+{
+    "helloWorld": "¡Hola Mundo!",
+    "hello": "Hola {userName}",
+    "@hello": {
+    "description": "A message with a single parameter in Spanish",
+    "placeholders": {
+      "userName": {
+        "type": "String",
+        "example": "Bob"
+      }
+     }
+    }
+}

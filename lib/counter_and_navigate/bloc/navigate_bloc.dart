@@ -20,13 +20,14 @@ class NavigateBloc extends Bloc<NavigateEvent, NavigateState> {
 
   Future<void> _onFetchPosts(Emitter<NavigateState> emit) async {
     emit(NavigateLoading());
-    // try {
-    //   List<PostModel> posts = await postRepository.fetchPosts();
-    //   emit(NavigateSuccess(posts));
-    // } catch (e) {
-    //   emit(NavigateFailure(e.toString()));
-    // }
-    var disPosts = await postRepository.fetchPostByFPDart("15");
-    disPosts.fold((l) => emit(NavigateState.failure(l.body)), (r) => emit(NavigateFailure(r)));
+    try {
+      List<PostModel> posts = await postRepository.fetchPosts();
+      emit(NavigateSuccess(posts));
+    } catch (e) {
+      emit(NavigateFailure(e.toString()));
+    }
+    // var disPosts = await postRepository.fetchPostByFPDart("15");
+    // disPosts.fold((l) => emit(NavigateState.failure(l.body)),
+    //     (r) => emit(NavigateFailure(r)));
   }
 }

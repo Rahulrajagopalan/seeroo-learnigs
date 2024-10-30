@@ -13,7 +13,13 @@ class RoutedScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             return Card(
               child: ListTile(
-                leading: Text(posts[index].id.toString()),
+                leading: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(posts[index].id.toString()),
+                    Text(posts[index].userId.toString()),
+                  ],
+                ),
                 title: Text(posts[index].title),
                 subtitle: Text(posts[index].body),
               ),
