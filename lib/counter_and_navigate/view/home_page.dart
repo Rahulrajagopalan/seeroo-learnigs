@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:rahul_test_file/route.dart';
+import 'package:rahul_test_file/presentation/core/router/route.dart';
 
 @RoutePage()
 class HomePage extends StatelessWidget {

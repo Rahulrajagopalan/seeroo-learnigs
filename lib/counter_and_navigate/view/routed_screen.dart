@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rahul_test_file/domain/models/post_model.dart';
+import 'package:rahul_test_file/domain/entities/post_model.dart';
 
 class RoutedScreen extends StatelessWidget {
   List<PostModel> posts;
@@ -12,6 +12,7 @@ class RoutedScreen extends StatelessWidget {
           itemCount: posts.length,
           itemBuilder: (context, index) {
             return Card(
+              color: Colors.red[posts[index].userId * 100],
               child: ListTile(
                 leading: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

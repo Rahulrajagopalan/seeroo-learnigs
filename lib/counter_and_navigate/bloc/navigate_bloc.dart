@@ -1,8 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:rahul_test_file/domain/models/post_model.dart';
-import 'package:rahul_test_file/repository/post_repository.dart';
+import 'package:rahul_test_file/domain/entities/post_model.dart';
+import 'package:rahul_test_file/data/repository/post_repository_impl.dart';
+import 'package:rahul_test_file/domain/repository/post_repository.dart';
 
 part 'navigate_bloc.freezed.dart';
 part 'navigate_event.dart';
