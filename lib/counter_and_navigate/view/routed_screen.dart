@@ -12,7 +12,7 @@ class RoutedScreen extends StatelessWidget {
           itemCount: posts.length,
           itemBuilder: (context, index) {
             return Card(
-              color: Colors.red[posts[index].userId * 100],
+              color: Colors.red[posts[index].userId! * 100],
               child: ListTile(
                 leading: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -21,8 +21,8 @@ class RoutedScreen extends StatelessWidget {
                     Text(posts[index].userId.toString()),
                   ],
                 ),
-                title: Text(posts[index].title),
-                subtitle: Text(posts[index].body),
+                title: Text(posts[index].title!),
+                subtitle: Text(posts[index].body!),
               ),
             );
           }),

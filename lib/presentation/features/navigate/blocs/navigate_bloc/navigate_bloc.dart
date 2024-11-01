@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:rahul_test_file/domain/entities/post_model.dart';
@@ -22,7 +23,7 @@ class NavigateBloc extends Bloc<NavigateEvent, NavigateState> {
   Future<void> _onFetchPosts(Emitter<NavigateState> emit) async {
     emit(NavigateLoading());
     try {
-      List<PostModel> posts = await postRepository.fetchPosts();
+      Either<String, List<PostModel>> posts = await postRepository.fetchPosts();
       emit(NavigateSuccess(posts));
     } catch (e) {
       emit(NavigateFailure(e.toString()));

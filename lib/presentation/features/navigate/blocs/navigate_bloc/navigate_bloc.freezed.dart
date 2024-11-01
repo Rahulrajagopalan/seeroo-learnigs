@@ -176,7 +176,7 @@ mixin _$NavigateState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PostModel> posts) success,
+    required TResult Function(Either<String, List<PostModel>> posts) success,
     required TResult Function(String message) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -184,7 +184,7 @@ mixin _$NavigateState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PostModel> posts)? success,
+    TResult? Function(Either<String, List<PostModel>> posts)? success,
     TResult? Function(String message)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -192,7 +192,7 @@ mixin _$NavigateState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PostModel> posts)? success,
+    TResult Function(Either<String, List<PostModel>> posts)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) =>
@@ -288,7 +288,7 @@ class _$NavigateInitialImpl implements NavigateInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PostModel> posts) success,
+    required TResult Function(Either<String, List<PostModel>> posts) success,
     required TResult Function(String message) failure,
   }) {
     return initial();
@@ -299,7 +299,7 @@ class _$NavigateInitialImpl implements NavigateInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PostModel> posts)? success,
+    TResult? Function(Either<String, List<PostModel>> posts)? success,
     TResult? Function(String message)? failure,
   }) {
     return initial?.call();
@@ -310,7 +310,7 @@ class _$NavigateInitialImpl implements NavigateInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PostModel> posts)? success,
+    TResult Function(Either<String, List<PostModel>> posts)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -405,7 +405,7 @@ class _$NavigateLoadingImpl implements NavigateLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PostModel> posts) success,
+    required TResult Function(Either<String, List<PostModel>> posts) success,
     required TResult Function(String message) failure,
   }) {
     return loading();
@@ -416,7 +416,7 @@ class _$NavigateLoadingImpl implements NavigateLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PostModel> posts)? success,
+    TResult? Function(Either<String, List<PostModel>> posts)? success,
     TResult? Function(String message)? failure,
   }) {
     return loading?.call();
@@ -427,7 +427,7 @@ class _$NavigateLoadingImpl implements NavigateLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PostModel> posts)? success,
+    TResult Function(Either<String, List<PostModel>> posts)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -485,7 +485,7 @@ abstract class _$$NavigateSuccessImplCopyWith<$Res> {
           $Res Function(_$NavigateSuccessImpl) then) =
       __$$NavigateSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<PostModel> posts});
+  $Res call({Either<String, List<PostModel>> posts});
 }
 
 /// @nodoc
@@ -505,9 +505,9 @@ class __$$NavigateSuccessImplCopyWithImpl<$Res>
   }) {
     return _then(_$NavigateSuccessImpl(
       null == posts
-          ? _value._posts
+          ? _value.posts
           : posts // ignore: cast_nullable_to_non_nullable
-              as List<PostModel>,
+              as Either<String, List<PostModel>>,
     ));
   }
 }
@@ -515,15 +515,10 @@ class __$$NavigateSuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$NavigateSuccessImpl implements NavigateSuccess {
-  const _$NavigateSuccessImpl(final List<PostModel> posts) : _posts = posts;
+  const _$NavigateSuccessImpl(this.posts);
 
-  final List<PostModel> _posts;
   @override
-  List<PostModel> get posts {
-    if (_posts is EqualUnmodifiableListView) return _posts;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_posts);
-  }
+  final Either<String, List<PostModel>> posts;
 
   @override
   String toString() {
@@ -535,12 +530,11 @@ class _$NavigateSuccessImpl implements NavigateSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NavigateSuccessImpl &&
-            const DeepCollectionEquality().equals(other._posts, _posts));
+            (identical(other.posts, posts) || other.posts == posts));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_posts));
+  int get hashCode => Object.hash(runtimeType, posts);
 
   /// Create a copy of NavigateState
   /// with the given fields replaced by the non-null parameter values.
@@ -556,7 +550,7 @@ class _$NavigateSuccessImpl implements NavigateSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PostModel> posts) success,
+    required TResult Function(Either<String, List<PostModel>> posts) success,
     required TResult Function(String message) failure,
   }) {
     return success(posts);
@@ -567,7 +561,7 @@ class _$NavigateSuccessImpl implements NavigateSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PostModel> posts)? success,
+    TResult? Function(Either<String, List<PostModel>> posts)? success,
     TResult? Function(String message)? failure,
   }) {
     return success?.call(posts);
@@ -578,7 +572,7 @@ class _$NavigateSuccessImpl implements NavigateSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PostModel> posts)? success,
+    TResult Function(Either<String, List<PostModel>> posts)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -627,10 +621,10 @@ class _$NavigateSuccessImpl implements NavigateSuccess {
 }
 
 abstract class NavigateSuccess implements NavigateState {
-  const factory NavigateSuccess(final List<PostModel> posts) =
+  const factory NavigateSuccess(final Either<String, List<PostModel>> posts) =
       _$NavigateSuccessImpl;
 
-  List<PostModel> get posts;
+  Either<String, List<PostModel>> get posts;
 
   /// Create a copy of NavigateState
   /// with the given fields replaced by the non-null parameter values.
@@ -710,7 +704,7 @@ class _$NavigateFailureImpl implements NavigateFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PostModel> posts) success,
+    required TResult Function(Either<String, List<PostModel>> posts) success,
     required TResult Function(String message) failure,
   }) {
     return failure(message);
@@ -721,7 +715,7 @@ class _$NavigateFailureImpl implements NavigateFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PostModel> posts)? success,
+    TResult? Function(Either<String, List<PostModel>> posts)? success,
     TResult? Function(String message)? failure,
   }) {
     return failure?.call(message);
@@ -732,7 +726,7 @@ class _$NavigateFailureImpl implements NavigateFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PostModel> posts)? success,
+    TResult Function(Either<String, List<PostModel>> posts)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {

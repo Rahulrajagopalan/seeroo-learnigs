@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rahul_test_file/counter_and_navigate/bloc/navigate_bloc.dart';
+import 'package:rahul_test_file/presentation/features/navigate/blocs/navigate_bloc/navigate_bloc.dart';
 import 'package:rahul_test_file/counter_and_navigate/view/routed_screen.dart';
 import 'package:rahul_test_file/domain/entities/post_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -46,26 +46,37 @@ class NavigationPage extends StatelessWidget {
                 ));
               });
         },
-        child:
-            BlocBuilder<NavigateBloc, NavigateState>(builder: (context, state) {
-          return state.when(
+        child: BlocBuilder<NavigateBloc, NavigateState>(
+          builder: (context, state) {
+            return state.when(
               initial: () => Center(
-                    child: Text(
-                        "${AppLocalizations.of(context)!.hello("Lovley")}, Press the button"),
-                  ),
+                child: Text(
+                  "${AppLocalizations.of(context)!.hello("Lovely")}, Press the button",
+                ),
+              ),
               loading: () => const Center(
-                    child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(),
+              ),
+              success: (posts) => posts.fold(
+                (errorMessage) => Center(
+                  child: Text(
+                    errorMessage,
+                    style: const TextStyle(color: Colors.red),
                   ),
-              success: (List<PostModel> posts) => RoutedScreen(
-                    posts: posts,
-                  ),
-              failure: (String message) => Center(
-                    child: Text(
-                      message,
-                      style: TextStyle(color: Colors.red),
-                    ),
-                  ));
-        }),
+                ),
+                (postList) => RoutedScreen(
+                  posts: postList,
+                ),
+              ),
+              failure: (message) => Center(
+                child: Text(
+                  message,
+                  style: const TextStyle(color: Colors.red),
+                ),
+              ),
+            );
+          },
+        ),
       ),
       // body: Localizations.override(
       //   context: context,
