@@ -19,12 +19,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'di/injectable.dart';
 
-final GetIt sl = GetIt.instance;
-
-void setupLocator() {
-  sl.registerLazySingleton<Dio>(() => Dio());
-}
-
 void main() {
   // To Impliment counter observer if neeeded
   // Bloc.observer = const CounterObserver();
