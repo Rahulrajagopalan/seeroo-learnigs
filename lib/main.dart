@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rahul_test_getx/infrastructure/navigation/navigation.dart';
 import 'package:rahul_test_getx/locator.dart';
 import 'package:rahul_test_getx/views/first_page.dart';
 import 'package:rahul_test_getx/views/home_page.dart';
@@ -23,11 +24,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: HomePage(),
-      getPages: [
-        GetPage(name: "/", page: ()=> HomePage()),
-        GetPage(name: "/first_page", page: ()=> FirstPage()),
-        GetPage(name: "/second_page", page: ()=> SecondPage()),
-      ],
+      getPages: Nav.routes,
     );
   }
 }
