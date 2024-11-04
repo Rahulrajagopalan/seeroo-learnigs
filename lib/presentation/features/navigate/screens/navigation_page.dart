@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rahul_test_file/presentation/features/navigate/blocs/navigate_bloc/navigate_bloc.dart';
-import 'package:rahul_test_file/counter_and_navigate/view/routed_screen.dart';
+import 'package:rahul_test_file/presentation/features/navigate/screens/routed_screen.dart';
 import 'package:rahul_test_file/domain/entities/post_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:rahul_test_file/presentation/features/translation/translation_bloc/translation_bloc.dart';

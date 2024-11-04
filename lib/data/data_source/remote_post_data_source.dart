@@ -7,7 +7,6 @@ import 'post_data_source.dart';
 
 @Injectable(as: PostDataSource)
 class RemotePostDataSource extends PostDataSource {
-  @injectable
   final Dio dio;
 
   RemotePostDataSource(this.dio) {
